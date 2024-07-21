@@ -1,13 +1,14 @@
 services:
   postgres:
-    container_name: postgres-sql
+    container_name: football-score-db
     image: postgres
     environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 5234
       PGDATA: /data/postgres
     volumes:
       - ./postgres:/data/postgres
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
     networks:
